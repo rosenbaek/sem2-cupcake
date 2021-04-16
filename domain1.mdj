@@ -6306,7 +6306,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cJ7XM3SdY0="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6314,7 +6315,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cJ7XM3SdY0="
 							},
-							"name": "email"
+							"name": "email",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6322,7 +6324,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cJ7XM3SdY0="
 							},
-							"name": "password"
+							"name": "password",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6330,7 +6333,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cJ7XM3SdY0="
 							},
-							"name": "role"
+							"name": "role",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6338,7 +6342,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cJ7XM3SdY0="
 							},
-							"name": "balance"
+							"name": "balance",
+							"type": ""
 						}
 					]
 				},
@@ -6386,7 +6391,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cRua84g2CU="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6394,7 +6400,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cRua84g2CU="
 							},
-							"name": "name"
+							"name": "name",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6402,7 +6409,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cRua84g2CU="
 							},
-							"name": "price"
+							"name": "price",
+							"type": ""
 						}
 					]
 				},
@@ -6450,7 +6458,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cW5As5fzWQ="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6458,7 +6467,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cW5As5fzWQ="
 							},
-							"name": "name"
+							"name": "name",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6466,7 +6476,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cW5As5fzWQ="
 							},
-							"name": "price"
+							"name": "price",
+							"type": ""
 						}
 					]
 				},
@@ -6484,7 +6495,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cjFSs6oBw0="
 							},
-							"name": "topping"
+							"name": "topping",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6492,7 +6504,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cjFSs6oBw0="
 							},
-							"name": "bottom"
+							"name": "bottom",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6500,7 +6513,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cjFSs6oBw0="
 							},
-							"name": "price"
+							"name": "price",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6508,7 +6522,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cjFSs6oBw0="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6516,7 +6531,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42cjFSs6oBw0="
 							},
-							"name": "amount"
+							"name": "amount",
+							"type": ""
 						}
 					]
 				},
@@ -6619,7 +6635,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "orderNumber"
+							"name": "orderNumber",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6627,7 +6644,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "timeStamp"
+							"name": "timeStamp",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6635,7 +6653,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "products"
+							"name": "products",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6643,7 +6662,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "totalPrice"
+							"name": "totalPrice",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6651,7 +6671,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "user_id"
+							"name": "user_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6659,7 +6680,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "isBought"
+							"name": "isBought",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6667,7 +6689,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "orderStatus"
+							"name": "orderStatus",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6675,7 +6698,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42ct8idMS31A="
 							},
-							"name": "date"
+							"name": "date",
+							"type": ""
 						}
 					]
 				},
@@ -6723,7 +6747,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42eWP9OSAkfc="
 							},
-							"name": "productName"
+							"name": "productName",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6731,7 +6756,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42eWP9OSAkfc="
 							},
-							"name": "amount"
+							"name": "amount",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6739,7 +6765,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF42eWP9OSAkfc="
 							},
-							"name": "totalPrice"
+							"name": "totalPrice",
+							"type": ""
 						}
 					]
 				}
