@@ -38,9 +38,9 @@ public class UserMapperTest {
                 stmt.execute("drop table if exists users" );
                 stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
                 stmt.execute(
-                    "insert into users (`email`,`password`)values " +
-                    "('jens@somewhere.com','jensen'), " +
-                    "('ken@somewhere.com','kensen'), " +
+                    "INSERT INTO users (email, password, role) VALUES" +
+                    "('jens@somewhere.com','jensen','customer'), " +
+                    "('ken@somewhere.com','kensen','customer'), " +
                     "('robin@somewhere.com','batman','employee')");
             } catch (SQLException ex) {
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
