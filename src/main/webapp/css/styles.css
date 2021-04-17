@@ -16,14 +16,13 @@
 }
 #lblCartCount {
     font-size: 12px;
-    background: #ff0000;
+    background: rgba(255,0,0,1);
     color: #fff;
     padding: 2px 5px;
     vertical-align: top;
     margin-top: -4px;
     margin-left: -10px;
 }
-
 #topmenu_login_dialogue
 {
     font-size: smaller;
@@ -37,12 +36,22 @@
 .text {
     font-family: "Roboto Light";
 }
+.basketButtom {
+    text-decoration: none;
+    color: rgba(255,255,255,1);
+}
 
+.basketButtom:hover {
+    text-decoration-line: underline;
+    text-decoration: white;
+    color: rgba(255,255,255,0.8);
+}
 .navtext {
     text-decoration: none;
+    color: rgba(255,255,255,1);
 }
 .navtext:hover {
     text-decoration-line: underline;
     text-decoration: white;
-    color: cornflowerblue;
+    color: rgba(255,255,255,0.8);
 }

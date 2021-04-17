@@ -37,18 +37,20 @@
         </div>
         <nav class="my-2 my-md-0 me-md-2">
             <c:if test="${addHomeLink == null }">
-                <a class="p-2 text-white navtext" href="<%=request.getContextPath()%>">Home</a>
+                <a class="p-2 navtext" href="<%=request.getContextPath()%>">Home</a>
             </c:if>
-            <a class="p-2 text-white navtext" href="#">Orders</a>
-            <a class="p-2 text-white navtext" href="#">Profile</a>
-            <a class="p-2 text-white navtext" href="#">About</a>
+            <a class="p-2 navtext" href="#">Orders</a>
+            <a class="p-2 navtext" href="#">Profile</a>
+            <a class="p-2 navtext" href="#">About</a>
         </nav>
 
 
     <div>
         <c:if test="${sessionScope.user.role.equals('customer')}">
-            <i class="fa ms-2" style="font-size:24px; margin-bottom: 2px;">&#xf07a;</i>
-            <span class='badge badge-warning me-2' id='lblCartCount'>10</span>
+            <a role="button" class="basketButtom" href="${pageContext.request.contextPath}/fc/logoutcommand">
+                <i class="fa ms-2" style="font-size:24px; margin-bottom: 2px;">&#xf07a;</i>
+                <span class='badge badge-warning me-2' id='lblCartCount'>10</span>
+            </a>
         </c:if>
         <c:if test="${sessionScope.user != null }">
            <span class="me-2"> ${sessionScope.user.email} </span>
