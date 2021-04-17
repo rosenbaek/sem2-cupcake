@@ -14,16 +14,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
 </head>
-<body>
+<body style="background-color: #f5f5f5;">
     <!--
         This header is inspired by this bootstrap
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
   -->
 
-<div class="container py-3">
+<div class="container py-0 px-0" style="background-color: white">
     <div>
         <img class="img-fluid" src="${pageContext.request.contextPath}/images/header.png">
     </div>
@@ -45,9 +46,12 @@
 
 
     <div>
-
+        <c:if test="${sessionScope.user.role.equals('customer')}">
+            <i class="fa ms-2" style="font-size:24px; margin-bottom: 2px;">&#xf07a;</i>
+            <span class='badge badge-warning me-2' id='lblCartCount'>10</span>
+        </c:if>
         <c:if test="${sessionScope.user != null }">
-            ${sessionScope.user.email}
+           <span class="me-2"> ${sessionScope.user.email} </span>
         </c:if>
 
         <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
@@ -56,8 +60,8 @@
 
         <c:if test="${isNotLoginPage && isNotRegisterPage}">
             <c:if test="${sessionScope.user != null }">
-                <button type="button" class="btn btn-sm  btn-outline-secondary"
-                href="${pageContext.request.contextPath}/fc/logoutcommand">Logout</button>
+                <a role="button" class="btn btn-sm  btn-outline-secondary"
+                href="${pageContext.request.contextPath}/fc/logoutcommand">Logout</a>
             </c:if>
             <c:if test="${sessionScope.user == null }">
                 <a role="button" class="btn btn-sm  btn-rounded btn-outline-secondary me-1 custom"
@@ -69,7 +73,7 @@
     </c:if>
 </header>
 
-<div id="body" class="container" style="min-height: 20vh;">
+<div id="body" class="container" style="min-height: 30vh;">
     <jsp:doBody/>
 </div>
 

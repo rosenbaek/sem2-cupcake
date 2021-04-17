@@ -2,7 +2,27 @@
     CSS styles for the whole website
     The file is included in the genericpage.tag template
  */
+.badge {
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
 
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 2px 5px;
+    vertical-align: top;
+    margin-top: -4px;
+    margin-left: -10px;
+}
 
 #topmenu_login_dialogue
 {
