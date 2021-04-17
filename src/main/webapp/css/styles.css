@@ -3,7 +3,26 @@
     The file is included in the genericpage.tag template
  */
 
+
 #topmenu_login_dialogue
 {
     font-size: smaller;
+}
+.custom {
+    width: 75px !important;
+    border-radius: 7px;
+    color: white;
+    border-color: white;
+}
+.text {
+    font-family: "Roboto Light";
+}
+
+.navtext {
+    text-decoration: none;
+}
+.navtext:hover {
+    text-decoration-line: underline;
+    text-decoration: white;
+    color: cornflowerblue;
 }
