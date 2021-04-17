@@ -60,10 +60,10 @@
                 href="${pageContext.request.contextPath}/fc/logoutcommand">Logout</button>
             </c:if>
             <c:if test="${sessionScope.user == null }">
-                <button type="button" class="btn btn-sm  btn-rounded btn-outline-secondary me-1 custom"
-                   href="${pageContext.request.contextPath}/fc/loginpage">Login</button>
-                <button type="button" class="btn btn-sm btn-rounded btn-outline-secondary custom"
-                   href="${pageContext.request.contextPath}/fc/registerpage">Sign up</button>
+                <a role="button" class="btn btn-sm  btn-rounded btn-outline-secondary me-1 custom"
+                   href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
+                <a role="button" class="btn btn-sm btn-rounded btn-outline-secondary custom"
+                   href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
             </c:if>
     </div>
     </c:if>
