@@ -42,8 +42,8 @@ public class FrontController extends HttpServlet
         // Initialize whatever global datastructures needed here:
         ProductFacade productFacade = new ProductFacade(database);
         try {
-            getServletContext().setAttribute("toppingList", productFacade.getAllToppings());
-            getServletContext().setAttribute("bottomList", productFacade.getAllBottoms());
+            getServletContext().setAttribute("toppingMap", productFacade.getAllToppings());
+            getServletContext().setAttribute("bottomMap", productFacade.getAllBottoms());
         } catch (UserException e) {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }

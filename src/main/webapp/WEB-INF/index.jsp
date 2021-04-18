@@ -18,20 +18,20 @@
             <h2>Order your cupcakes here</h2>
         </div>
         <div>
-            <form>
+            <form action="${pageContext.request.contextPath}/fc/addtoshoppingcart" method="post">
                 <div class="form-check form-check-inline">
-                    <label for="toppings">Topping</label>
-                    <select name="toppings" id="toppings">
-                        <c:forEach var="topping" items="${applicationScope.toppingList}">
-                            <option value="${topping.id}">${topping.name}</option>
+                    <label for="toppingid">Topping</label>
+                    <select name="toppingid" id="toppingid">
+                        <c:forEach var="topping" items="${applicationScope.toppingMap}">
+                            <option value="${topping.key}">${topping.value.name}</option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="form-check form-check-inline">
-                    <label for="bottoms">Bottoms</label>
-                    <select name="bottoms" id="bottoms">
-                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
-                            <option value="${bottom.id}">${bottom.name}</option>
+                    <label for="bottomid">Bottoms</label>
+                    <select name="bottomid" id="bottomid">
+                        <c:forEach var="bottom" items="${applicationScope.bottomMap}">
+                            <option value="${bottom.key}">${bottom.value.name}</option>
                         </c:forEach>
                     </select>
                 </div>

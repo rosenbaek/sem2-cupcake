@@ -1,5 +1,6 @@
 package business.persistence;
 
+import business.entities.Bottom;
 import business.entities.Topping;
 import business.exceptions.UserException;
 
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ProductMapper {
@@ -17,8 +19,8 @@ public class ProductMapper {
         this.database = database;
     }
 
-    public List<Topping> getAllToppings() throws UserException {
-        List<Topping> toppingList = new ArrayList<>();
+    public HashMap<Integer,Topping> getAllToppings() throws UserException {
+        HashMap<Integer,Topping> toppingMap = new HashMap();
 
         try (Connection connection = database.connect())
         {
@@ -32,10 +34,9 @@ public class ProductMapper {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     float price = rs.getFloat("price");
-
-                    toppingList.add(new Topping(id,name,price));
+                    toppingMap.put(id,new Topping(id,name,price));
                 }
-                return toppingList;
+                return toppingMap;
             }
             catch (SQLException ex)
             {
@@ -47,8 +48,8 @@ public class ProductMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
-    public List<Topping> getAllBottoms() throws UserException {
-        List<Topping> bottomList = new ArrayList<>();
+    public HashMap<Integer,Bottom> getAllBottoms() throws UserException {
+        HashMap<Integer,Bottom>  bottomMap = new HashMap<>();
 
         try (Connection connection = database.connect())
         {
@@ -62,10 +63,10 @@ public class ProductMapper {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     float price = rs.getFloat("price");
+                    bottomMap.put(id,new Bottom(id,name,price));
 
-                    bottomList.add(new Topping(id,name,price));
                 }
-                return bottomList;
+                return bottomMap;
             }
             catch (SQLException ex)
             {

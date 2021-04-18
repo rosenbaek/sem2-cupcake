@@ -46,9 +46,9 @@
 
 
     <div>
-        <c:if test="${sessionScope.user.role.equals('customer')}">
-            <a role="button" class="basketButtom" href="${pageContext.request.contextPath}/fc/logoutcommand">
-                <i class="fa ms-2" style="font-size:24px; margin-bottom: 2px;">&#xf07a;</i>
+        <c:if test="${!sessionScope.user.role.equals('employee')}">
+            <a role="button" class="basketButtom" href="${pageContext.request.contextPath}/fc/shoppingcart">
+                <i class="fa ms-2" style="font-size:24px;">&#xf07a;</i>
                 <span class='badge badge-warning me-2' id='lblCartCount'>10</span>
             </a>
         </c:if>
