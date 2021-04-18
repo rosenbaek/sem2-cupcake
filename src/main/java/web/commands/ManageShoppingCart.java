@@ -2,6 +2,7 @@ package web.commands;
 
 import business.entities.Bottom;
 import business.entities.Cupcake;
+import business.entities.ShoppingCart;
 import business.entities.Topping;
 import business.exceptions.UserException;
 
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AddToShoppingCart extends CommandUnprotectedPage {
-    public AddToShoppingCart(String pageToShow) {
+public class ManageShoppingCart extends CommandUnprotectedPage {
+    public ManageShoppingCart(String pageToShow) {
         super(pageToShow);
     }
 
@@ -21,7 +22,9 @@ public class AddToShoppingCart extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         Cupcake cupcake;
-        List<Cupcake> cupcakeList = new ArrayList<>();
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+
         HashMap<Integer,Topping> toppingMap = (HashMap<Integer, Topping>) request.getServletContext().getAttribute("toppingMap");
         HashMap<Integer,Bottom> bottomMap = (HashMap<Integer, Bottom>) request.getServletContext().getAttribute("bottomMap");
         int toppingId = Integer.parseInt(request.getParameter("toppingid"));
@@ -30,7 +33,7 @@ public class AddToShoppingCart extends CommandUnprotectedPage {
         Bottom bottom = bottomMap.get(bottomId);
 
         if (session.getAttribute("shoppingcart") != null){
-            cupcakeList = (List<Cupcake>) session.getAttribute("shoppingcart");
+            shoppingCart = (ShoppingCart) session.getAttribute("shoppingcart");
         }
 
         cupcake = new Cupcake(
@@ -38,10 +41,10 @@ public class AddToShoppingCart extends CommandUnprotectedPage {
                 bottom,
                 Integer.parseInt(request.getParameter("quantity")));
 
-        cupcakeList.add(cupcake);
-        session.setAttribute("shoppingcart", cupcakeList);
-        System.out.println("size: " + cupcakeList.size());
-        System.out.println("name: " + cupcakeList.get(0).getBottom());
+
+        shoppingCart.addToCupcakelist(cupcake);
+        session.setAttribute("shoppingcart", shoppingCart);
+
         return pageToShow;
     }
 }

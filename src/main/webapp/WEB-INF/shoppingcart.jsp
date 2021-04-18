@@ -19,7 +19,7 @@
         </div>
         <table class="table">
             <thead><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Cupcake Price</th></thead>
-            <c:forEach var="item" items="${sessionScope.shoppingcart}">
+            <c:forEach var="item" items="${sessionScope.shoppingcart.cupcakeList}">
                 <tr>
                     <td>${item.topping.name}</td>
                     <td>${item.bottom.name}</td>
@@ -27,9 +27,8 @@
                     <td>${item.totalCupcakePrice}</td>
                 </tr>
             </c:forEach>
-
-
         </table>
+        <h2>${sessionScope.shoppingcart.totalPrice}</h2>
             <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
                     since your are logged in as an employee</p>

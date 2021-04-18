@@ -49,7 +49,12 @@
         <c:if test="${!sessionScope.user.role.equals('employee')}">
             <a role="button" class="basketButtom" href="${pageContext.request.contextPath}/fc/shoppingcart">
                 <i class="fa ms-2" style="font-size:24px;">&#xf07a;</i>
-                <span class='badge badge-warning me-2' id='lblCartCount'>10</span>
+                <span class='badge badge-warning me-2' id='lblCartCount'>
+                    <c:if test="${empty sessionScope.shoppingcart}">
+                         0
+                    </c:if>
+                    ${sessionScope.shoppingcart.numberOfItems}
+                </span>
             </a>
         </c:if>
         <c:if test="${sessionScope.user != null }">

@@ -1,5 +1,6 @@
 package web;
 
+import business.entities.ShoppingCart;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.ProductFacade;
@@ -44,6 +45,8 @@ public class FrontController extends HttpServlet
         try {
             getServletContext().setAttribute("toppingMap", productFacade.getAllToppings());
             getServletContext().setAttribute("bottomMap", productFacade.getAllBottoms());
+
+
         } catch (UserException e) {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
