@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Shoppingcart
+         Payment Page
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -15,7 +15,7 @@
     <jsp:body>
 
         <div>
-            <h2>See the items in your shopping cart</h2>
+            <h2>Here you can pay</h2>
         </div>
         <table class="table">
             <thead><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Cupcake Price</th></thead>
@@ -35,16 +35,8 @@
         <div class="col-sm-4">
 
         </div>
-
-
-            <c:if test="${sessionScope.role == 'customer' }">
-                <c:set var = "link" scope = "session" value = "/fc/gotopayment"/>
-            </c:if>
-            <c:if test="${empty sessionScope.role}">
-                <c:set var = "link" scope = "session" value = "/fc/loginpage"/>
-            </c:if>
         <div class="col-sm-4">
-            <a class="btn btn-success" href="${pageContext.request.contextPath}${link}" role="button">Go to payment</a>
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/fc/gotopayment" role="button">Go to payment</a>
         </div>
         </div>
 

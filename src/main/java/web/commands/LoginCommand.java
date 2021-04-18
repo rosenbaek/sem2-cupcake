@@ -34,6 +34,13 @@ public class LoginCommand extends CommandUnprotectedPage
         session.setAttribute("email", email);
 
         String pageToShow =  user.getRole() + "page";
+
+        //Made  to ensure the flow continues from shoppingcart to paymentpage
+        if (session.getAttribute("link").equals("/fc/loginpage")) {
+            return "paymentpage";
+        }
+
+
         return REDIRECT_INDICATOR + pageToShow;
         }
         catch (UserException ex)

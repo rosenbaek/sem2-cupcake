@@ -23,7 +23,7 @@
                     <label for="toppingid">Topping</label>
                     <select name="toppingid" id="toppingid">
                         <c:forEach var="topping" items="${applicationScope.toppingMap}">
-                            <option value="${topping.key}">${topping.value.name}</option>
+                            <option value="${topping.key    }">${topping.value.name}</option>
                         </c:forEach>
                     </select>
                 </div>
