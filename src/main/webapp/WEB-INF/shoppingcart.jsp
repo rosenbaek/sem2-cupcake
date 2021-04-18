@@ -17,33 +17,50 @@
         <div>
             <h2>See the items in your shopping cart</h2>
         </div>
-        <table class="table">
-            <thead><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Cupcake Price</th></thead>
+        <form action="${pageContext.request.contextPath}/fc/removefromshoppingcart" method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Topping</th>
+                <th scope="col">Bottom</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Cupcake Price</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
             <c:forEach var="item" items="${sessionScope.shoppingcart.cupcakeList}">
                 <tr>
                     <td>${item.topping.name}</td>
                     <td>${item.bottom.name}</td>
                     <td>${item.quantity}</td>
                     <td>${item.totalCupcakePrice}</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" name="delete" value="${item}">
+                            Remove
+                        </button>
+                    </td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
         <div class="row">
             <div class="col-sm-4">
                 <h2>${sessionScope.shoppingcart.totalPrice}</h2>
             </div>
-        <div class="col-sm-4">
+            <div class="col-sm-4">
 
-        </div>
+            </div>
             <c:if test="${sessionScope.role == 'customer' }">
-                <c:set var = "link" scope = "session" value = "/fc/gotopayment"/>
+                <c:set var="link" scope="session" value="/fc/gotopayment"/>
             </c:if>
             <c:if test="${empty sessionScope.role}">
-                <c:set var = "link" scope = "session" value = "/fc/loginpage"/>
+                <c:set var="link" scope="session" value="/fc/loginpage"/>
             </c:if>
-        <div class="col-sm-4">
-            <a class="btn btn-success" href="${pageContext.request.contextPath}${link}" role="button">Go to payment</a>
-        </div>
+            <div class="col-sm-4">
+                <a class="btn btn-success" href="${pageContext.request.contextPath}${link}" role="button">Go to
+                    payment</a>
+            </div>
         </div>
 
 

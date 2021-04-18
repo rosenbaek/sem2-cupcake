@@ -1,5 +1,7 @@
 package business.entities;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Cupcake {
     private float totalCupcakePrice;
     private int quantity;
@@ -35,6 +37,16 @@ public class Cupcake {
 
     public Bottom getBottom() {
         return bottom;
+    }
+
+    @Override
+    public String toString() {
+        return "Cupcake{" +
+                "totalCupcakePrice=" + totalCupcakePrice +
+                ", quantity=" + quantity +
+                ", topping=" + topping +
+                ", bottom=" + bottom +
+                '}';
     }
 }
 
