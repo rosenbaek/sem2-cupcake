@@ -20,10 +20,10 @@
 
         <div class="row">
             <div class="col-sm-4">
-                <h2>${sessionScope.shoppingcart.totalPrice}</h2>
+                <h2>Total price for the order: ${sessionScope.shoppingcart.totalPrice}</h2>
             </div>
         <div class="col-sm-4">
-            ${sessionScope.user.balance}
+            <h2>Your credits: ${sessionScope.user.balance}</h2>
         </div>
         <div class="col-sm-4">
             <a class="btn btn-success" href="${pageContext.request.contextPath}/fc/gotopayment" role="button">Pay now</a>

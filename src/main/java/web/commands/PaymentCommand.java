@@ -11,8 +11,6 @@ public class PaymentCommand extends CommandProtectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-
-
         return pageToShow;
     }
 }
