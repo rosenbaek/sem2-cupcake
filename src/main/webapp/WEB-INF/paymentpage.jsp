@@ -17,26 +17,16 @@
         <div>
             <h2>Here you can pay</h2>
         </div>
-        <table class="table">
-            <thead><th>Topping</th><th>Bottom</th><th>Quantity</th><th>Cupcake Price</th></thead>
-            <c:forEach var="item" items="${sessionScope.shoppingcart.cupcakeList}">
-                <tr>
-                    <td>${item.topping.name}</td>
-                    <td>${item.bottom.name}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.totalCupcakePrice}</td>
-                </tr>
-            </c:forEach>
-        </table>
+
         <div class="row">
             <div class="col-sm-4">
                 <h2>${sessionScope.shoppingcart.totalPrice}</h2>
             </div>
         <div class="col-sm-4">
-
+            ${sessionScope.user.}
         </div>
         <div class="col-sm-4">
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/fc/gotopayment" role="button">Go to payment</a>
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/fc/gotopayment" role="button">Pay now</a>
         </div>
         </div>
 
