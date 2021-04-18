@@ -23,7 +23,7 @@
                 <h2>${sessionScope.shoppingcart.totalPrice}</h2>
             </div>
         <div class="col-sm-4">
-            ${sessionScope.user.}
+            ${sessionScope.user.balance}
         </div>
         <div class="col-sm-4">
             <a class="btn btn-success" href="${pageContext.request.contextPath}/fc/gotopayment" role="button">Pay now</a>

@@ -36,8 +36,6 @@
                 </c:if>
                 <button class="btn btn-primary" type="submit" value="Login">Sign in</button>
             </form>
-
-
         </div>
     </jsp:body>
 </t:genericpage>

@@ -35,8 +35,6 @@
         <div class="col-sm-4">
 
         </div>
-
-
             <c:if test="${sessionScope.role == 'customer' }">
                 <c:set var = "link" scope = "session" value = "/fc/gotopayment"/>
             </c:if>

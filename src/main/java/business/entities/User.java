@@ -58,4 +58,7 @@ public class User
         this.id = id;
     }
 
+    public float getBalance() {
+        return balance;
+    }
 }

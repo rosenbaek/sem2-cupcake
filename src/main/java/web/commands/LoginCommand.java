@@ -36,8 +36,12 @@ public class LoginCommand extends CommandUnprotectedPage
         String pageToShow =  user.getRole() + "page";
 
         //Made  to ensure the flow continues from shoppingcart to paymentpage
-        if (session.getAttribute("link").equals("/fc/loginpage")) {
-            return "paymentpage";
+        try{
+            if (session.getAttribute("link").equals("/fc/loginpage")) {
+                return "paymentpage";
+            }
+        }catch (NullPointerException e){
+            //Ignore the exception as it's intended if you didnt hit the page via the payment page.
         }
 
 
