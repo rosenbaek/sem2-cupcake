@@ -48,6 +48,7 @@ public class PayNowCommand extends CommandProtectedPage{
                 session.setAttribute("user",userFacade.login(user.getEmail(),user.getPassword()));
 
 
+                //TODO - Lav siden pæn og læg rigtige attributer på
                 //Smid hen på ordre historik side hvor der tilføjes "din ordre er gået igennem" hvis man kommer herfra.
                 request.setAttribute("status","Success! The order is added!");
                 return "userorderhistory";

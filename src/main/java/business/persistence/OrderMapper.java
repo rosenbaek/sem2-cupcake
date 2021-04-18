@@ -15,6 +15,51 @@ public class OrderMapper {
         this.database = database;
     }
 
+    public int deleteOrder(int orderId) throws UserException {
+        try (Connection connection = database.connect())
+        {
+            String sql = "DELETE FROM `orders` WHERE (`id` = ?);";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setInt(1,orderId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
+    public int deleteOrderDetails(int orderId) throws UserException {
+        try (Connection connection = database.connect())
+        {
+            String sql = "DELETE FROM `order_details` WHERE (`orders_id` = ?);";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setInt(1,orderId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
+
     public void insertOrder(Order order, ShoppingCart shoppingCart) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO orders (totalPrice,status,users_id) VALUES (?, ?, ?)";
@@ -39,8 +84,10 @@ public class OrderMapper {
                         int orderId = order.getId();
                         try {
                             insertOrderDetail(toppingsId, bottomsId, quantity, orderId);
-                        } catch (SQLException ex) {
-                           //TODO: Delete entry in orders and entries in order_Details for the order
+                        } catch (Exception ex) {
+                           //Delete entry in orders and entries in order_Details for the order
+                            deleteOrderDetails(orderId);
+                            deleteOrder(orderId);
                             throw new UserException(ex.getMessage());
                         }
                     }
