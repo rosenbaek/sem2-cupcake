@@ -2,6 +2,18 @@
     CSS styles for the whole website
     The file is included in the genericpage.tag template
  */
+[id^="order"],                        /* HIDE CHECKBOX */
+[id^="order"] ~ .list,                /* HIDE LIST */
+[id^="order"] + label  span + span,   /* HIDE "Collapse" */
+[id^="order"]:checked + label span{   /* HIDE "Expand" (IF CHECKED) */
+    display:none;
+}
+[id^="order"]:checked + label span + span{
+    display:inline-block;                 /* SHOW "Collapse" (IF CHECKED) */
+}
+[id^="order"]:checked ~ .list{
+    display:block;                        /* SHOW LIST (IF CHECKED) */
+}
 .badge {
     padding-left: 10px;
     padding-right: 10px;
