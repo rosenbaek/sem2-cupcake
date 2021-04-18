@@ -14,6 +14,30 @@ public class UserMapper
         this.database = database;
     }
 
+    public void deductUserBalance(User user, float amount) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE users SET `balance` = balance-? WHERE (`id` = ?);";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setFloat(1,Math.abs(amount));
+                ps.setInt(2,user.getId());
+                ps.executeUpdate();
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
+
     public void createUser(User user) throws UserException
     {
         try (Connection connection = database.connect())

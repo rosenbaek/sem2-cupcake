@@ -26,4 +26,9 @@ public class UserFacade
         return user;
     }
 
+    public void deductUserBalance(User user, float amount) throws UserException
+    {
+        userMapper.deductUserBalance(user,amount);
+    }
+
 }
