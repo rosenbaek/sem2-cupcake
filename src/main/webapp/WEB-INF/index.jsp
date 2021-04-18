@@ -15,12 +15,35 @@
     <jsp:body>
 
         <div>
-            <h2>Our Cool Site</h2>
-
-            <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
-            </div>
-
+            <h2>Order your cupcakes here</h2>
+        </div>
+        <div>
+            <form>
+                <div class="form-check form-check-inline">
+                    <label for="toppings">Topping</label>
+                    <select name="toppings" id="toppings">
+                        <c:forEach var="topping" items="${applicationScope.toppingList}">
+                            <option value="${topping.id}">${topping.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label for="bottoms">Bottoms</label>
+                    <select name="bottoms" id="bottoms">
+                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                            <option value="${bottom.id}">${bottom.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="50">
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
             <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
                     since your are logged in as an employee</p>
@@ -33,7 +56,7 @@
                 <p><a href="fc/customerpage">Customer Page</a>
             </c:if>
 
-        </div>
+
 
     </jsp:body>
 </t:genericpage>

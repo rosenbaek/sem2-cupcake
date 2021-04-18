@@ -2,6 +2,7 @@ package web;
 
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.services.ProductFacade;
 import web.commands.*;
 
 import java.io.IOException;
@@ -39,7 +40,13 @@ public class FrontController extends HttpServlet
         }
 
         // Initialize whatever global datastructures needed here:
-
+        ProductFacade productFacade = new ProductFacade(database);
+        try {
+            getServletContext().setAttribute("toppingList", productFacade.getAllToppings());
+            getServletContext().setAttribute("bottomList", productFacade.getAllBottoms());
+        } catch (UserException e) {
+            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
+        }
     }
 
     protected void processRequest(
