@@ -21,22 +21,20 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">Topping</th>
-                <th scope="col">Bottom</th>
+                <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Cupcake Price</th>
+                <th scope="col">Price</th>
                 <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="item" items="${sessionScope.shoppingcart.cupcakeList}">
+            <c:forEach var="item" items="${sessionScope.shoppingcart.productMap}">
                 <tr>
-                    <td>${item.topping.name}</td>
-                    <td>${item.bottom.name}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.totalCupcakePrice}</td>
+                    <td>${item.value.name}</td>
+                    <td>${item.value.quantity}</td>
+                    <td>${item.value.totalPrice}</td>
                     <td>
-                        <button type="submit" class="btn btn-primary" name="delete" value="${item}">
+                        <button type="submit" class="btn btn-primary" name="delete" value="${item.key}">
                             Remove
                         </button>
                     </td>

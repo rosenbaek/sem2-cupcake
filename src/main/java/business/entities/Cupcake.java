@@ -2,33 +2,22 @@ package business.entities;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Cupcake {
-    private float totalCupcakePrice;
-    private int quantity;
+public class Cupcake extends Product{
     private Topping topping;
     private Bottom bottom;
 
-    public Cupcake(Topping topping, Bottom bottom, int quantity) {
-        this.topping = topping;
+    public Cupcake(String name, int quantity, float totalPrice, Bottom bottom, Topping topping) {
+        super(name, quantity, totalPrice);
         this.bottom = bottom;
-        this.quantity = quantity;
-        calculatePrice();
+        this.topping = topping;
     }
 
-    private void calculatePrice() {
-        totalCupcakePrice = (topping.price + bottom.price) * quantity;
-    }
-
-    public void setTotalCupcakePrice(float totalCupcakePrice) {
-        this.totalCupcakePrice = totalCupcakePrice;
-    }
-
-    public float getTotalCupcakePrice() {
-        return totalCupcakePrice;
-    }
-
-    public int getQuantity() {
-        return quantity;
+    @Override
+    public String toString() {
+        return "Cupcake{" +
+                "topping=" + topping +
+                ", bottom=" + bottom +
+                '}';
     }
 
     public Topping getTopping() {
@@ -39,14 +28,5 @@ public class Cupcake {
         return bottom;
     }
 
-    @Override
-    public String toString() {
-        return "Cupcake{" +
-                "totalCupcakePrice=" + totalCupcakePrice +
-                ", quantity=" + quantity +
-                ", topping=" + topping +
-                ", bottom=" + bottom +
-                '}';
-    }
 }
 

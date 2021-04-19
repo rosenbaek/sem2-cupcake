@@ -2,8 +2,8 @@ package business.persistence;
 
 import business.entities.Cupcake;
 import business.entities.Order;
+import business.entities.Product;
 import business.entities.ShoppingCart;
-import business.entities.User;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -77,18 +77,21 @@ public class OrderMapper {
                 }
                 order.setId(id);
 
-                    for (Cupcake tmp : shoppingCart.getCupcakeList()) {
-                        int toppingsId = tmp.getTopping().getId();
-                        int bottomsId = tmp.getBottom().getId();
+                    for (Product tmp : shoppingCart.getProductMap().values()) {
                         int quantity = tmp.getQuantity();
                         int orderId = order.getId();
-                        try {
-                            insertOrderDetail(toppingsId, bottomsId, quantity, orderId);
-                        } catch (Exception ex) {
-                           //Delete entry in orders and entries in order_Details for the order
-                            deleteOrderDetails(orderId);
-                            deleteOrder(orderId);
-                            throw new UserException(ex.getMessage());
+
+                        if (tmp instanceof Cupcake) {
+                            int toppingsId = ((Cupcake) tmp).getTopping().getId();
+                            int bottomsId = ((Cupcake) tmp).getBottom().getId();
+                            try {
+                                insertOrderDetail(toppingsId, bottomsId, quantity, orderId);
+                            } catch (Exception ex) {
+                                //Delete entry in orders and entries in order_Details for the order
+                                deleteOrderDetails(orderId);
+                                deleteOrder(orderId);
+                                throw new UserException(ex.getMessage());
+                            }
                         }
                     }
             } catch (SQLException ex) {

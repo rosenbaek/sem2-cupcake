@@ -20,8 +20,10 @@ public class RemoveFromShoppingCart extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingcart");
-        String test = (String) request.getParameter("delete");
-        System.out.println(test);
+        int deleteId = Integer.parseInt(request.getParameter("delete"));
+
+        shoppingCart.removeFromProductMap(deleteId);
+        session.setAttribute("shoppingcart",shoppingCart);
         return pageToShow;
     }
 }
