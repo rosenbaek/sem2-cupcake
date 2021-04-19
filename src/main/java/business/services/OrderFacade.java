@@ -8,6 +8,8 @@ import business.persistence.Database;
 import business.persistence.OrderMapper;
 import business.persistence.UserMapper;
 
+import java.util.HashMap;
+
 public class OrderFacade
 {
     OrderMapper orderMapper;
@@ -22,5 +24,12 @@ public class OrderFacade
         orderMapper.insertOrder(order, shoppingCart);
     }
 
+    public HashMap<Integer,Order> getAllOrders() throws UserException {
+        return orderMapper.getAllOrders();
+    }
+
+    public int deleteOrder(int orderId) throws UserException {
+        return orderMapper.deleteOrder(orderId);
+    }
 
 }

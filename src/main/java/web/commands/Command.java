@@ -34,6 +34,8 @@ public abstract class Command
         commands.put("paynow", new PayNowCommand("userorderhistory", "customer"));
         commands.put("removefromshoppingcart", new RemoveFromShoppingCart("shoppingcart"));
         commands.put("addcredittouser", new AddCreditToUserCommand("employeepage", "employee"));
+        commands.put("showorders", new ShowOrdersCommand("userorderhistory"));
+        commands.put("removefromorders", new RemoveFromOrders("adminallorderspage", "employee"));
 
     }
 

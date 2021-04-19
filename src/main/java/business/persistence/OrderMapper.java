@@ -7,12 +7,55 @@ import business.entities.ShoppingCart;
 import business.exceptions.UserException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class OrderMapper {
     private Database database;
 
     public OrderMapper(Database database) {
         this.database = database;
+    }
+
+
+    public HashMap<Integer,Order> getAllOrders() throws UserException {
+
+        HashMap<Integer,Order> orders = new HashMap<>();
+        try (Connection connection = database.connect())
+        {
+            String sql = "SELECT * FROM orders;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next())
+                {
+                    int orderId = rs.getInt("id");
+                    float totalPrice = rs.getFloat("totalPrice");
+                    String status = rs.getString("status");
+                    Timestamp ts = rs.getTimestamp("timestamp");
+                    int userId = rs.getInt("users_id");
+
+                    Order order = new Order(totalPrice,status,userId);
+                    order.setId(orderId);
+                    order.setTimestamp(ts);
+
+                    orders.put(orderId, order);
+
+                }
+                return orders;
+            }
+            catch (SQLException ex)
+            {
+
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
     }
 
     public int deleteOrder(int orderId) throws UserException {
