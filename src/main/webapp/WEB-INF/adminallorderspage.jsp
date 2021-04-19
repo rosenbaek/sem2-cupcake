@@ -21,7 +21,7 @@
                     <form action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
                         <div class="row align-items-center" style="height: 50px; margin-top: 3px; border-radius: 7px; background-color: #716598; color: white">
                             <div class="col-sm-2">Order ID: ${orders.value.id}</div>
-                            <div class="col-sm-3">Timestamp${orders.value.timestamp}</div>
+                            <div class="col-sm-3">Timestamp: ${orders.value.timestamp}</div>
                             <div class="col-sm-2">Status: ${orders.value.status}</div>
                             <div class="col-sm-2">User Id: ${orders.value.userId}</div>
                             <div class="col-sm-3 mr-2">

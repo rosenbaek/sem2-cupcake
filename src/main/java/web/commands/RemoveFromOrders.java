@@ -21,7 +21,7 @@ public class RemoveFromOrders extends CommandProtectedPage {
         OrderFacade orderFacade = new OrderFacade(database);
         int deleteId = Integer.parseInt(request.getParameter("delete"));
         orderFacade.deleteOrder(deleteId);
-        
+
         HashMap<Integer, Order> orders = orderFacade.getAllOrders();
         request.setAttribute("orders", orders);
         return pageToShow;
