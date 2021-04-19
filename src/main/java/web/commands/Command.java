@@ -33,6 +33,8 @@ public abstract class Command
         commands.put("gotopayment", new PaymentCommand("paymentpage", "customer"));
         commands.put("paynow", new PayNowCommand("userorderhistory", "customer"));
         commands.put("removefromshoppingcart", new RemoveFromShoppingCart("shoppingcart"));
+        commands.put("addcredittouser", new AddCreditToUserCommand("employeepage", "employee"));
+
     }
 
     public static Command fromPath(

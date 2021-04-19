@@ -34,7 +34,7 @@ public class LoginCommand extends CommandUnprotectedPage {
 
 
             //Made  to ensure the flow continues from shoppingcart to paymentpage
-            if (session.getAttribute("link") != null && session.getAttribute("link").equals("/fc/loginpage")) {
+            if (session.getAttribute("link") != null && session.getAttribute("link").equals("/fc/loginpage") && user.getRole().equals("customer")) {
                 return "paymentpage";
             }
 

@@ -14,6 +14,10 @@ public class UserFacade
         userMapper = new UserMapper(database);
     }
 
+    public void addCreditToUserBalance(int userId, float amount) throws UserException {
+        userMapper.addCreditToUserBalance(userId,amount);
+    }
+
     public User login(String email, String password) throws UserException
     {
         return userMapper.login(email, password);

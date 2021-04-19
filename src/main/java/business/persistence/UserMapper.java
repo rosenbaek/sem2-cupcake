@@ -14,6 +14,32 @@ public class UserMapper
         this.database = database;
     }
 
+    public void addCreditToUserBalance(int userId, float amount) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE users SET `balance` = balance+? WHERE (`id` = ?);";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setFloat(1,Math.abs(amount));
+                ps.setInt(2,userId);
+                int rowAffected = ps.executeUpdate();
+                if (rowAffected != 1) {
+                    throw new UserException("Error while inserting credit to user");
+                }
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
     public void deductUserBalance(User user, float amount) throws UserException
     {
         try (Connection connection = database.connect())

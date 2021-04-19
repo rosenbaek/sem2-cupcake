@@ -39,8 +39,16 @@
             <c:if test="${addHomeLink == null }">
                 <a class="p-2 navtext" href="<%=request.getContextPath()%>">Home</a>
             </c:if>
-            <a class="p-2 navtext" href="#">Orders</a>
-            <a class="p-2 navtext" href="#">Profile</a>
+
+            <c:if test="${sessionScope.user != null }">
+                <a class="p-2 navtext" href="#">Profile</a>
+                <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/showorders">Orders</a>
+
+
+                <c:if test="${sessionScope.user.role.equals('employee')}">
+                    <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/employeepage">Admin</a>
+                </c:if>
+            </c:if>
             <a class="p-2 navtext" href="#">About</a>
         </nav>
 
