@@ -18,16 +18,19 @@
             <div class="row mx-3" >
                 <input id="order${topping.key}" type="checkbox">
                 <label for="order${topping.key}">
-                    <div class="row align-items-center" style="height: 50px; margin-top: 3px; background-color: lightgrey;">
+                    <div class="row align-items-center" style="height: 50px; margin-top: 3px; border-radius: 7px; background-color: #716598; color: white">
                         <div class="col-sm-4">${topping.value.name}</div>
                         <div class="col-sm-6">${topping.value.name}</div>
                         <div class="col-sm-2 mr-2">${topping.value.name}</div>
                     </div>
                 </label>
                 <div class="list align-items-center">
-                    <ul>
-                        <li>${topping.value.name}</li>
-                    </ul>
+                    <div class="row align-items-center" style="height: 50px; margin-top: 0px; border-radius: 7px; background-color: #F4F3EE;">
+                        <div class="col-sm-4">${topping.value.name}</div>
+                        <div class="col-sm-6">${topping.value.name}</div>
+                        <div class="col-sm-2 mr-2">${topping.value.name}</div>
+                    </div>
+
                 </div>
             </div>
 
