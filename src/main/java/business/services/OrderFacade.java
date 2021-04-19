@@ -31,5 +31,8 @@ public class OrderFacade
     public int deleteOrder(int orderId) throws UserException {
         return orderMapper.deleteOrder(orderId);
     }
+    public int deleteOrderDetails(int orderId) throws UserException {
+        return orderMapper.deleteOrderDetails(orderId);
+    }
 
 }
