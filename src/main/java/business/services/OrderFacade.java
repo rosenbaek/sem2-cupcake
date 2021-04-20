@@ -37,8 +37,8 @@ public class OrderFacade
     public int deleteOrderDetails(int orderId) throws UserException {
         return orderMapper.deleteOrderDetails(orderId);
     }
-    public ArrayList<Product> getAllProductsFromOrder(int orderId) throws UserException {
-        return orderMapper.getAllProductsFromOrder(orderId);
+    public TreeMap<Integer,Order> getAllOrdersByUserId(int userId) throws UserException {
+        return orderMapper.getAllOrdersByUserId(userId);
     }
 
 }

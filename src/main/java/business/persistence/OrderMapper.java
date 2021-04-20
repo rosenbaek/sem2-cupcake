@@ -15,27 +15,53 @@ public class OrderMapper {
         this.database = database;
     }
 
-    public ArrayList<Product> getAllProductsFromOrder(int orderId) throws UserException {
-        ArrayList<Product> products = new ArrayList<>();
+
+    public TreeMap<Integer,Order> getAllOrdersByUserId(int userId) throws UserException {
+
+        TreeMap<Integer,Order> orders = new TreeMap<>();
         try (Connection connection = database.connect())
         {
-            String sql = "SELECT * FROM order_details where orders_id = ?;";
+            String sql = "SELECT * FROM orders INNER JOIN order_details ON orders.id = order_details.orders_id WHERE orders.users_id = ?;";
 
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setInt(1,orderId);
+                ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
+                    Order order = null;
+                    Cupcake cupcake = null;
+                    int orderId = rs.getInt("id");
+                    float totalPrice = rs.getFloat("totalPrice");
+                    String status = rs.getString("status");
+                    Timestamp ts = rs.getTimestamp("timestamp");
+                    userId = rs.getInt("users_id");
                     int quantity = rs.getInt("quantity");
+
+                    order = new Order(totalPrice,status,userId);
+                    order.setId(orderId);
+                    order.setTimestamp(ts);
+
+
+
+                    //Topping and bottom is needed to construct cupcake
                     Topping topping = FrontController.toppingMap.get(rs.getInt("toppings_id"));
                     Bottom bottom = FrontController.bottomMap.get(rs.getInt("bottoms_id"));
                     String name = (topping.getName() + "/" + bottom.getName());
-                    float totalPrice = (bottom.getPrice() + topping.getPrice()) * quantity;
-                    Cupcake cupcake = new Cupcake(topping.getName() + "/" + bottom.getName(),quantity,totalPrice,bottom,topping);
-                    products.add(cupcake);
+                    //Calculate cupcake price
+                    float totalCupcakePrice = (bottom.getPrice() + topping.getPrice()) * quantity;
+                    //Construct Cupcake
+                    cupcake = new Cupcake(name,quantity,totalCupcakePrice,bottom,topping);
+
+                    //Checks if order exist in the map. If yes: adds product to order arraylist else add order to map
+                    if (orders.containsKey(orderId)){
+                        orders.get(orderId).addProduct(cupcake);
+                    } else {
+                        order.addProduct(cupcake);
+                        orders.put(orderId, order);
+                    }
                 }
-                return products;
+                return orders;
             }
             catch (SQLException ex)
             {
@@ -48,6 +74,8 @@ public class OrderMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
+
+
     public TreeMap<Integer,Order> getAllOrders() throws UserException {
 
         TreeMap<Integer,Order> orders = new TreeMap<>();

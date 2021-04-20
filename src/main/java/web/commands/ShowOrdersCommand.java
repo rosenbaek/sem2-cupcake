@@ -21,13 +21,17 @@ public class ShowOrdersCommand extends CommandUnprotectedPage{
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         OrderFacade orderFacade = new OrderFacade(database);
+        TreeMap<Integer,Order> orders;
+
         if (user.getRole().equals("customer")){
             //TODO make logic to get all orders by userid
+            orders = orderFacade.getAllOrdersByUserId(user.getId());
+            request.setAttribute("orders", orders);
             return pageToShow;
 
         } else if (user.getRole().equals("employee")){
             //TODO make logic to get all orders by any user
-            TreeMap<Integer, Order> orders = orderFacade.getAllOrders();
+            orders = orderFacade.getAllOrders();
             request.setAttribute("orders", orders);
             return "adminallorderspage";
         }
