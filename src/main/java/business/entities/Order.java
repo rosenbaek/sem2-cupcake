@@ -1,6 +1,7 @@
 package business.entities;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Order {
     private int id;
@@ -8,12 +9,14 @@ public class Order {
     private String status;
     private Timestamp timestamp;
     private int userId;
+    private ArrayList<Product> products;
 
 
     public Order(float totalPrice, String status, int userId) {
         this.totalPrice = totalPrice;
         this.status = status;
         this.userId = userId;
+        this.products = new ArrayList<>();
     }
 
     public void setId(int id) {
@@ -42,5 +45,13 @@ public class Order {
 
     public int getUserId() {
         return userId;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
     }
 }

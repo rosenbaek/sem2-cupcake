@@ -1,6 +1,8 @@
 package web;
 
+import business.entities.Bottom;
 import business.entities.ShoppingCart;
+import business.entities.Topping;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.ProductFacade;
@@ -8,6 +10,7 @@ import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,6 +27,8 @@ public class FrontController extends HttpServlet
     private final static String URL = "jdbc:mysql://167.172.176.18:3306/cupcake?serverTimezone=CET";
 
     public static Database database;
+    public static HashMap<Integer, Topping> toppingMap;
+    public static HashMap<Integer, Bottom> bottomMap;
 
     public void init() throws ServletException
     {
@@ -43,8 +48,11 @@ public class FrontController extends HttpServlet
         // Initialize whatever global datastructures needed here:
         ProductFacade productFacade = new ProductFacade(database);
         try {
-            getServletContext().setAttribute("toppingMap", productFacade.getAllToppings());
-            getServletContext().setAttribute("bottomMap", productFacade.getAllBottoms());
+
+            toppingMap = productFacade.getAllToppings();
+            bottomMap = productFacade.getAllBottoms();
+            getServletContext().setAttribute("toppingMap", toppingMap);
+            getServletContext().setAttribute("bottomMap", bottomMap);
 
 
         } catch (UserException e) {

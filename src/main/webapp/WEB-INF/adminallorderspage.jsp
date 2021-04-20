@@ -13,37 +13,59 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <div class="accordion" id="accordionExample">
         <c:forEach var="orders" items="${requestScope.orders}">
-            <div class="row mx-3" >
-                <input id="order${orders.key}" type="checkbox">
-                <label for="order${orders.key}">
-                    <form action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
-                        <div class="row align-items-center" style="height: 50px; margin-top: 3px; border-radius: 7px; background-color: #716598; color: white">
-                            <div class="col-sm-2">Order ID: ${orders.value.id}</div>
-                            <div class="col-sm-3">Timestamp: ${orders.value.timestamp}</div>
-                            <div class="col-sm-2">Status: ${orders.value.status}</div>
-                            <div class="col-sm-2">User Id: ${orders.value.userId}</div>
-                            <div class="col-sm-3 mr-2">
-                                 <button type="submit" class="btn btn-primary" name="delete" value="${orders.key}">
-                                     Remove
-                                 </button>
-                            </div>
-                        </div>
-                    </form>
-                </label>
-                <div class="list align-items-center">
 
-                    <c:forEach var="orders" items="${requestScope.orders}">
-                    <div class="row align-items-center" style="height: 50px; margin-top: 0px; border-radius: 7px; background-color: #F4F3EE;">
-                        <div class="col-sm-4">${orders.value.id}</div>
-                        <div class="col-sm-6">${orders.value.id}</div>
-                        <div class="col-sm-2 mr-2">${orders.value.id}</div>
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header" id="heading${orders.key}">
+
+                        <a class="row accordion-button collapsed align-items-center text-decoration-none"  data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}" aria-expanded="false" aria-controls="collapse${orders.key}">
+
+                                <div class="col-sm-2">Order ID: ${orders.value.id}</div>
+                                <div class="col-sm-3">Timestamp: ${orders.value.timestamp}</div>
+                                <div class="col-sm-2">Status: ${orders.value.status}</div>
+                                <div class="col-sm-2">User Id: ${orders.value.userId}</div>
+                                <div class="col-sm-3">
+                                    <form action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
+                                        <button type="submit" class="btn btn-primary btn-sm" name="delete" value="${orders.key}">
+                                            Remove
+                                        </button>
+                                    </form>
+                                </div>
+
+                        </a>
+
+
+
+                </h2>
+
+
+                <div id="collapse${orders.key}" class="accordion-collapse collapse" aria-labelledby="heading${orders.key}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="list align-items-center">
+                            <c:forEach var="products" items="${orders.value.products}">
+                                <div class="row align-items-center" style="height: 50px; margin-top: 0px; border-radius: 7px; background-color: #F4F3EE;">
+                                    <div class="col-sm-4">${products.name}</div>
+                                    <div class="col-sm-6">${products.quantity}</div>
+                                    <div class="col-sm-2 mr-2">${products.totalPrice}</div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
-                    </c:forEach>
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
         </c:forEach>
+        </div>
     </jsp:body>
 </t:genericpage>

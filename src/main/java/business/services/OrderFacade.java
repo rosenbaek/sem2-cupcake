@@ -1,6 +1,7 @@
 package business.services;
 
 import business.entities.Order;
+import business.entities.Product;
 import business.entities.ShoppingCart;
 import business.entities.User;
 import business.exceptions.UserException;
@@ -8,7 +9,9 @@ import business.persistence.Database;
 import business.persistence.OrderMapper;
 import business.persistence.UserMapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class OrderFacade
 {
@@ -24,7 +27,7 @@ public class OrderFacade
         orderMapper.insertOrder(order, shoppingCart);
     }
 
-    public HashMap<Integer,Order> getAllOrders() throws UserException {
+    public TreeMap<Integer,Order> getAllOrders() throws UserException {
         return orderMapper.getAllOrders();
     }
 
@@ -33,6 +36,9 @@ public class OrderFacade
     }
     public int deleteOrderDetails(int orderId) throws UserException {
         return orderMapper.deleteOrderDetails(orderId);
+    }
+    public ArrayList<Product> getAllProductsFromOrder(int orderId) throws UserException {
+        return orderMapper.getAllProductsFromOrder(orderId);
     }
 
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class ShowOrdersCommand extends CommandUnprotectedPage{
     public ShowOrdersCommand(String pageToShow) {
@@ -26,7 +27,7 @@ public class ShowOrdersCommand extends CommandUnprotectedPage{
 
         } else if (user.getRole().equals("employee")){
             //TODO make logic to get all orders by any user
-            HashMap<Integer, Order> orders = orderFacade.getAllOrders();
+            TreeMap<Integer, Order> orders = orderFacade.getAllOrders();
             request.setAttribute("orders", orders);
             return "adminallorderspage";
         }
