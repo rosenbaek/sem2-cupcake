@@ -22,9 +22,9 @@ public class RemoveFromOrders extends CommandProtectedPage {
         HttpSession session = request.getSession();
         OrderFacade orderFacade = new OrderFacade(database);
         int deleteId = Integer.parseInt(request.getParameter("delete"));
-
+        System.out.println("im here");
         //Delete in order_details first then orders
-        orderFacade.deleteOrderDetails(deleteId);
+        System.out.println(orderFacade.deleteOrderDetails(deleteId));
         orderFacade.deleteOrder(deleteId);
 
         TreeMap<Integer, Order> orders = orderFacade.getAllOrders();

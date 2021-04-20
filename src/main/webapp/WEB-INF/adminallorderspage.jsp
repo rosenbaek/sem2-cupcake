@@ -18,38 +18,38 @@
 
 
             <div class="accordion-item">
+                <div class="row align-items-center">
+                <h2 class="col-lg-11 accordion-header" id="heading${orders.key}">
 
-                <h2 class="accordion-header" id="heading${orders.key}">
-
-                        <a class="row accordion-button collapsed align-items-center text-decoration-none"  data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}" aria-expanded="false" aria-controls="collapse${orders.key}">
+                        <a class="accordion-button collapsed align-items-center text-decoration-none"  data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}" aria-expanded="false" aria-controls="collapse${orders.key}">
 
                                 <div class="col-sm-2">Order ID: ${orders.value.id}</div>
-                                <div class="col-sm-3">Timestamp: ${orders.value.timestamp}</div>
-                                <div class="col-sm-2">Status: ${orders.value.status}</div>
+                                <div class="col-sm-5">Timestamp: ${orders.value.timestamp}</div>
+                                <div class="col-sm-3">Status: ${orders.value.status}</div>
                                 <div class="col-sm-2">User Id: ${orders.value.userId}</div>
-                                <div class="col-sm-3">
-                                    <form action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
-                                        <button type="submit" class="btn btn-primary btn-sm" name="delete" value="${orders.key}">
-                                            Remove
-                                        </button>
-                                    </form>
-                                </div>
+
 
                         </a>
-
-
-
                 </h2>
-
-
+                <form class="col-lg-1 "  action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
+                    <button type="submit" class="btn btn-primary btn-sm" name="delete" value="${orders.key}">
+                        Remove
+                    </button>
+                </form>
+                </div>
                 <div id="collapse${orders.key}" class="accordion-collapse collapse" aria-labelledby="heading${orders.key}" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="list align-items-center">
+                            <div class="row align-items-center col-lg-11 mx-1" style="height: 50px; margin-top: 2px; border-radius: 7px; background-color: #F4F3EE;">
+                                <div class="col-sm-4"><b>Name</b></div>
+                                <div class="col-sm-6"><b>Quantity</b></div>
+                                <div class="col-sm-2"><b>Total price</b></div>
+                            </div>
                             <c:forEach var="products" items="${orders.value.products}">
-                                <div class="row align-items-center" style="height: 50px; margin-top: 0px; border-radius: 7px; background-color: #F4F3EE;">
+                                <div class="row align-items-center col-lg-11 mx-1" style="height: 50px; margin-top: 2px; border-radius: 7px; background-color: #F4F3EE;">
                                     <div class="col-sm-4">${products.name}</div>
                                     <div class="col-sm-6">${products.quantity}</div>
-                                    <div class="col-sm-2 mr-2">${products.totalPrice}</div>
+                                    <div class="col-sm-2">${products.totalPrice}</div>
                                 </div>
                             </c:forEach>
                         </div>
