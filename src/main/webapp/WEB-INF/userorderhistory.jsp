@@ -19,7 +19,7 @@
                 <div class="accordion-item">
 
                     <div class="accordion-header" id="heading${orders.key}">
-                        <a class="row accordion-button collapsed align-items-center text-decoration-none mx=0"  data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}" aria-expanded="false" aria-controls="collapse${orders.key}">
+                        <a class="row accordion-button collapsed align-items-center text-decoration-none" id="test" style="margin-left: 0;" data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}" aria-expanded="false" aria-controls="collapse${orders.key}">
                             <div class="col-sm-4">Order ID: ${orders.value.id}</div>
                             <div class="col-sm-5">Timestamp: ${orders.value.timestamp}</div>
                             <div class="col-sm-2">Status: ${orders.value.status}</div>
