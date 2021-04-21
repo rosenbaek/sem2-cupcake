@@ -1,9 +1,6 @@
 package business.services;
 
-import business.entities.Order;
-import business.entities.Product;
-import business.entities.ShoppingCart;
-import business.entities.User;
+import business.entities.*;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.OrderMapper;
@@ -20,6 +17,10 @@ public class OrderFacade
     public OrderFacade(Database database)
     {
         orderMapper = new OrderMapper(database);
+    }
+
+    public int changeOrderStatus(int orderId, Status status) throws UserException {
+        return orderMapper.changeOrderStatus(orderId,status);
     }
 
     public void insertOrder(Order order, ShoppingCart shoppingCart) throws UserException

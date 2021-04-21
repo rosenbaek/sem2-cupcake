@@ -2,6 +2,7 @@ package web.commands;
 
 import business.entities.Order;
 import business.entities.ShoppingCart;
+import business.entities.Status;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.OrderFacade;
@@ -35,7 +36,7 @@ public class PayNowCommand extends CommandProtectedPage{
 
         if (userBalance >= orderPrice){
             //Create order
-            Order order = new Order(orderPrice,"betalt", user.getId());
+            Order order = new Order(orderPrice, Status.Paid, user.getId());
 
             //write order to order and order_details table
             try {
@@ -47,11 +48,12 @@ public class PayNowCommand extends CommandProtectedPage{
                 //Update the user in session scope so balance is up to date
                 session.setAttribute("user",userFacade.login(user.getEmail(),user.getPassword()));
 
-
-                //TODO - Lav siden pæn og læg rigtige attributer på
                 //Smid hen på ordre historik side hvor der tilføjes "din ordre er gået igennem" hvis man kommer herfra.
                 request.setAttribute("status","Success! The order is added!");
-                return "userorderhistory";
+
+                //Redirects user to showOrdersCommand as we need to fetch orders from DB before entering the userorderhistory page
+                ShowOrdersCommand showOrdersCommand = new ShowOrdersCommand("userorderhistory");
+                return showOrdersCommand.execute(request, response);
             } catch (UserException e) {
                 //Something went wrong when inserting to DB!
                 request.setAttribute("error", e.getMessage());

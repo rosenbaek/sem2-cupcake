@@ -2,6 +2,7 @@ package web;
 
 import business.entities.Bottom;
 import business.entities.ShoppingCart;
+import business.entities.Status;
 import business.entities.Topping;
 import business.exceptions.UserException;
 import business.persistence.Database;
@@ -53,7 +54,8 @@ public class FrontController extends HttpServlet
             bottomMap = productFacade.getAllBottoms();
             getServletContext().setAttribute("toppingMap", toppingMap);
             getServletContext().setAttribute("bottomMap", bottomMap);
-
+            //Set enums
+            getServletContext().setAttribute("statuslist", Status.values());
 
         } catch (UserException e) {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);

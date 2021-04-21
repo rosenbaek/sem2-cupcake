@@ -16,8 +16,32 @@ public class OrderMapper {
     }
 
 
-    public TreeMap<Integer,Order> getAllOrdersByUserId(int userId) throws UserException {
+    public int changeOrderStatus(int orderId, Status status) throws UserException {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE orders SET status = ? WHERE (`id` = ?);";
 
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setString(1,status.toString());
+                ps.setInt(2,orderId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
+
+
+    public TreeMap<Integer,Order> getAllOrdersByUserId(int userId) throws UserException {
         TreeMap<Integer,Order> orders = new TreeMap<>();
         try (Connection connection = database.connect())
         {
@@ -38,7 +62,7 @@ public class OrderMapper {
                     userId = rs.getInt("users_id");
                     int quantity = rs.getInt("quantity");
 
-                    order = new Order(totalPrice,status,userId);
+                    order = new Order(totalPrice,Status.valueOf(status),userId);
                     order.setId(orderId);
                     order.setTimestamp(ts);
 
@@ -97,7 +121,7 @@ public class OrderMapper {
                     int userId = rs.getInt("users_id");
                     int quantity = rs.getInt("quantity");
 
-                    order = new Order(totalPrice,status,userId);
+                    order = new Order(totalPrice,Status.valueOf(status),userId);
                     order.setId(orderId);
                     order.setTimestamp(ts);
 
@@ -185,7 +209,7 @@ public class OrderMapper {
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setFloat(1, order.getTotalPrice());
-                ps.setString(2, order.getStatus());
+                ps.setString(2, order.getStatus().toString());
                 ps.setInt(3, order.getUserId());
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();

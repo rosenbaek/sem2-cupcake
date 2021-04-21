@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class Order {
     private int id;
     private float totalPrice;
-    private String status;
+    private Status status;
     private Timestamp timestamp;
     private int userId;
     private ArrayList<Product> products;
 
 
-    public Order(float totalPrice, String status, int userId) {
+    public Order(float totalPrice, Status status, int userId) {
         this.totalPrice = totalPrice;
         this.status = status;
         this.userId = userId;
@@ -35,8 +35,12 @@ public class Order {
         return totalPrice;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Timestamp getTimestamp() {
