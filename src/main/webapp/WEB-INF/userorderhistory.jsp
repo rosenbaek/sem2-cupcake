@@ -26,9 +26,10 @@
                         <a class="row accordion-button collapsed align-items-center text-decoration-none" id="test"
                            style="margin-left: 0;" data-bs-toggle="collapse" data-bs-target="#collapse${orders.key}"
                            aria-expanded="false" aria-controls="collapse${orders.key}">
-                            <div class="col-sm-4">Order ID: ${orders.value.id}</div>
-                            <div class="col-sm-5">Timestamp: ${orders.value.timestamp}</div>
-                            <div class="col-sm-2">Status: ${orders.value.status}</div>
+                            <div class="col-sm-2">Order ID: ${orders.value.id}</div>
+                            <div class="col-sm-4">Timestamp: ${orders.value.timestamp}</div>
+                            <div class="col-sm-3">Status: ${orders.value.status}</div>
+                            <div class="col-sm-2">Total Price: ${orders.value.totalPrice}</div>
                         </a>
                     </div>
 

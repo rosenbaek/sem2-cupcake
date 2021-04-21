@@ -24,13 +24,14 @@
                         <div class="col-lg-10 collapsed align-items-center text-decoration-none">
                             <div class="row">
                                 <div class="col-sm-2">Order ID: ${orders.value.id}</div>
-                                <div class="col-sm-5">Timestamp: ${orders.value.timestamp}</div>
-                                <div class="col-sm-3">Status: ${orders.value.status}</div>
+                                <div class="col-sm-4">Timestamp: ${orders.value.timestamp}</div>
+                                <div class="col-sm-2">Status: ${orders.value.status}</div>
                                 <div class="col-sm-2">User Id: ${orders.value.userId}</div>
+                                <div class="col-sm-2">Total Price: ${orders.value.totalPrice}</div>
                             </div>
 
                         </div>
-                    <form class="col-lg-1 float-right"  action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
+                    <form class="col text-center"  action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
                         <button type="submit" class="btn btn-danger btn-sm" name="delete" value="${orders.key}">
                             Delete
                         </button>
