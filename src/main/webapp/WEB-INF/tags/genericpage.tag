@@ -49,7 +49,7 @@
                     <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/employeepage">Admin</a>
                 </c:if>
             </c:if>
-            <a class="p-2 navtext" href="#">About</a>
+            <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/aboutpage">About</a>
         </nav>
 
 
