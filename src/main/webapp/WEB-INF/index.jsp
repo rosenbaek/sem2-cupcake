@@ -55,8 +55,5 @@
                     are logged in as a customer</p>
                 <p><a href="fc/customerpage">Customer Page</a>
             </c:if>
-
-
-
     </jsp:body>
 </t:genericpage>

@@ -1,5 +1,7 @@
 package business.entities;
 
+import java.util.TreeMap;
+
 public class User
 {
 
@@ -9,6 +11,7 @@ public class User
         this.password = password;
         this.role = role;
         this.balance = balance;
+        this.orders = new TreeMap<>();
     }
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
@@ -16,6 +19,7 @@ public class User
     private String password; // Should be hashed and secured
     private String role;
     private float balance;
+    private TreeMap<Integer,Order> orders;
 
 
     public String getEmail()
@@ -60,5 +64,13 @@ public class User
 
     public float getBalance() {
         return balance;
+    }
+
+    public TreeMap<Integer, Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order){
+        orders.put(order.getId(),order);
     }
 }
