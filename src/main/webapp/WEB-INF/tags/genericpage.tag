@@ -41,7 +41,7 @@
             </c:if>
 
             <c:if test="${sessionScope.user != null }">
-                <a class="p-2 navtext" href="#">Profile</a>
+                <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/profilepage">Profile</a>
                 <a class="p-2 navtext" href="${pageContext.request.contextPath}/fc/showorders">Orders</a>
 
 

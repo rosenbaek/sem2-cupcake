@@ -41,4 +41,10 @@ public class UserFacade
     }
 
 
+
+    public User updateUser(User user) throws UserException {
+        return userMapper.updateUser(user);
+    }
+
+
 }

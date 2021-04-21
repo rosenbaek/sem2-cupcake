@@ -38,6 +38,8 @@ public abstract class Command
         commands.put("removefromorders", new RemoveFromOrders("adminallorderspage", "employee"));
         commands.put("changeorderstatus", new ChangeOrderStatusCommand("employeepage","employee"));
         commands.put("aboutpage", new CommandUnprotectedPage("aboutpage"));
+        commands.put("profilepage", new CommandUnprotectedPage("profilepage"));
+        commands.put("editprofile", new EditProfileCommand("profilepage"));
     }
 
     public static Command fromPath(
