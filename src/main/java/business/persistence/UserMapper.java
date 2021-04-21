@@ -16,6 +16,60 @@ public class UserMapper
         this.database = database;
     }
 
+    public User updateUserPassword(User user,String newPassword) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE `users` SET `password` = ? WHERE (`id` = ?);";
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setString(1,newPassword);
+                ps.setInt(2,user.getId());
+                int rowAffected = ps.executeUpdate();
+                if (rowAffected != 1) {
+                    throw new UserException("Error when updating user");
+                }
+                user.setEmail(newPassword);
+                return user;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
+    public User updateUserEmail(User user,String newEmail) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            String sql = "UPDATE `users` SET `email` = ? WHERE (`id` = ?);";
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                    ps.setString(1,newEmail);
+                    ps.setInt(2,user.getId());
+                int rowAffected = ps.executeUpdate();
+                if (rowAffected != 1) {
+                    throw new UserException("Error when updating user");
+                }
+                user.setEmail(newEmail);
+                return user;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
     public TreeMap<Integer, User> getAllUsers() throws UserException {
 
         TreeMap<Integer,User> users = new TreeMap<>();
