@@ -1,9 +1,11 @@
 package business.persistence;
 
+import business.entities.*;
 import business.exceptions.UserException;
-import business.entities.User;
+import web.FrontController;
 
 import java.sql.*;
+import java.util.TreeMap;
 
 public class UserMapper
 {
@@ -12,6 +14,41 @@ public class UserMapper
     public UserMapper(Database database)
     {
         this.database = database;
+    }
+
+    public TreeMap<Integer, User> getAllUsers() throws UserException {
+
+        TreeMap<Integer,User> users = new TreeMap<>();
+        try (Connection connection = database.connect())
+        {
+            String sql = "SELECT * FROM users;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next())
+                {
+                    User user;
+                    int id = rs.getInt("id");
+                    String email = rs.getString("email");
+                    String password = rs.getString("password");
+                    String role = rs.getString("role");
+                    float balance = rs.getFloat("balance");
+                    user = new User(email,password,role,balance);
+                    user.setId(id);
+                    users.put(user.getId(),user);
+                }
+                return users;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
     }
 
     public void addCreditToUserBalance(int userId, float amount) throws UserException

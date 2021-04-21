@@ -1,17 +1,16 @@
 package web;
 
-import business.entities.Bottom;
-import business.entities.ShoppingCart;
-import business.entities.Status;
-import business.entities.Topping;
+import business.entities.*;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.ProductFacade;
+import business.services.UserFacade;
 import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;

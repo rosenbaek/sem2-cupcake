@@ -5,6 +5,8 @@ import business.persistence.Database;
 import business.persistence.UserMapper;
 import business.exceptions.UserException;
 
+import java.util.TreeMap;
+
 public class UserFacade
 {
     UserMapper userMapper;
@@ -34,5 +36,9 @@ public class UserFacade
     {
         userMapper.deductUserBalance(user,amount);
     }
+    public TreeMap<Integer, User> getAllUsers() throws UserException {
+        return userMapper.getAllUsers();
+    }
+
 
 }
