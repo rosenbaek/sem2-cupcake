@@ -30,9 +30,9 @@
                             </div>
 
                         </div>
-                    <form class="col-lg-1"  action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
-                        <button type="submit" class="btn btn-primary btn-sm" name="delete" value="${orders.key}">
-                            Remove
+                    <form class="col-lg-1 float-right"  action="${pageContext.request.contextPath}/fc/removefromorders" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" name="delete" value="${orders.key}">
+                            Delete
                         </button>
                     </form>
                 </h2>
