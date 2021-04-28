@@ -29,7 +29,7 @@ public class EditProfileCommand extends CommandUnprotectedPage {
         }
         //opdatere db
         user = userFacade.updateUser(user);
-        
+
         //opdatere sessionscope
         request.getSession().setAttribute("user",user);
         return pageToShow;
